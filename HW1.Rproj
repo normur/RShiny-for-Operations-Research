@@ -1,0 +1,32 @@
+---
+title: "HW1"
+author: "Nora Murray"
+date: "September 2, 2019"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+#Libraries
+
+```
+
+```{r}
+#Exploratory Data Analysis & Cleaning 
+ny_brew <- read.csv("Wineries__Breweries__and_Distilleries.csv")
+df_brew <- data.frame(ny_brew)
+dim(df_brew)
+names(df_brew)
+colSums(is.na(df_brew))
+
+#Remove Null Values
+df_brew <- na.omit(df_brew)
+
+#There is location data listed as 0--remove these cases 
+df_brew <-df_brew[df_brew$Latitude != 0 & df_brew$Longitude != 0, ]
+
+lapply(df_brew, class)
+lapply(df_brew, typeof)
+
+```
+
